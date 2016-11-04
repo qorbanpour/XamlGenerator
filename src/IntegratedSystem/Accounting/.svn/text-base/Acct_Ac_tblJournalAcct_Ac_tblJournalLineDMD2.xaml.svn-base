@@ -1,0 +1,345 @@
+<navigation:Page x:Class="IntegratedSystem.Acct_Ac_tblJournalAcct_Ac_tblJournalLineDMD2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+     xmlns:e="clr-namespace:IntegratedSystem.Web"  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    FontFamily="Tahoma"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <Grid FlowDirection="RightToLeft" x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+           
+        </Grid.ColumnDefinitions>
+        <Grid FlowDirection="RightToLeft" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!-- 
+                Here is the place for GridView View and Buttons
+            -->
+            <Border Grid.Row="0" Style="{StaticResource TopGridViewBorder}" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="0" Width="100" Height="33" Content="رکورد جدید" Click="Acct_Ac_tblJournalLineRadDetailsGridNewButton_Click" />
+                    <Button Grid.Row="0" Grid.Column="1" Width="100" Height="33" Content="ذخیره" Click="Acct_Ac_tblJournalLineRadDetailsGridSubmitButton_Click" />
+                    <Button Grid.Row="0" Grid.Column="2" Width="100" Height="33" Content="حذف" Click="Acct_Ac_tblJournalLineRadDetailsGridDelete_Click" />
+                    <Button Grid.Row="0" Grid.Column="3" Width="100" Height="33" Content="کنسل" Click="Acct_Ac_tblJournalLineRadDetailsGridCancelButton_Click" />
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="1" Style="{StaticResource MiddleGridViewBorder}">
+                <Grid>
+                    <telerik:RadDomainDataSource x:Name="GetAcct_Ac_tblJournalLineByAcct_Ac_tblJournalQueryDataSource"
+AutoLoad="True"
+QueryName="GetAcct_Ac_tblJournalLineByAcct_Ac_tblJournalQuery" >
+                        <telerik:RadDomainDataSource.DomainContext>
+                            <e:IntegratedSystemDomainContext />
+                        </telerik:RadDomainDataSource.DomainContext>
+                        <telerik:RadDomainDataSource.QueryParameters>
+                            <telerik:QueryParameter ParameterName="Acct_Ac_tblJournalID" Value="{Binding JournalId}"></telerik:QueryParameter>
+                        </telerik:RadDomainDataSource.QueryParameters>
+                    </telerik:RadDomainDataSource>
+                    <telerik:RadGridView AutoGenerateColumns="False" IsReadOnly="{Binding IsFormReadOnly}" HorizontalAlignment="Stretch" Name="Acct_Ac_tblJournalLineRadDetailsGrid" ItemsSource="{Binding DataView, ElementName=GetAcct_Ac_tblJournalLineByAcct_Ac_tblJournalQueryDataSource}" IsBusy="{Binding IsBusy, ElementName=GetAcct_Ac_tblJournalLineByAcct_Ac_tblJournalQueryDataSource}" VerticalAlignment="Stretch" >
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn Header="کد گروه" DataMemberBinding="{Binding CodeGoroh, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_CodeGoroh}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_CodeGoroh}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding CodeGoroh }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding CodeGoroh, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="کد کل" DataMemberBinding="{Binding CodeKol, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_CodeKol}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_CodeKol}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding CodeKol }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding CodeKol, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="کد معین" DataMemberBinding="{Binding CodeMoeen, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_CodeMoeen}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_CodeMoeen}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding CodeMoeen }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding CodeMoeen, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="کد تفضیلی" DataMemberBinding="{Binding CodeTafsily, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_CodeTafsily}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_CodeTafsily}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding CodeTafsily }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding CodeTafsily, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="کد مرکز" DataMemberBinding="{Binding CodeMarkaz, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_CodeMarkaz}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_CodeMarkaz}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding CodeMarkaz }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding CodeMarkaz, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="شرح سند" DataMemberBinding="{Binding SharhSanad, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_SharhSanad}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_SharhSanad}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding SharhSanad }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding SharhSanad, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="بدهکار" DataMemberBinding="{Binding debit, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_debit}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_debit}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding debit }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding debit, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="بستانکار" DataMemberBinding="{Binding credit, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_credit}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_credit}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding credit }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding credit, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="تعداد" DataMemberBinding="{Binding Tedad, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Tedad}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Tedad}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Tedad }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding Tedad, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="شماره پروژه" DataMemberBinding="{Binding ShomarehProject, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_ShomarehProject}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_ShomarehProject}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ShomarehProject }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding ShomarehProject, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="شماره چک" DataMemberBinding="{Binding CheckNO, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_CheckNO}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_CheckNO}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding CheckNO }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding CheckNO, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="شماره فیش" DataMemberBinding="{Binding FishNO, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_FishNO}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_FishNO}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding FishNO }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding FishNO, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="مبلغ ارزی" DataMemberBinding="{Binding MablaghArzy, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_MablaghArzy}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_MablaghArzy}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding MablaghArzy }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding MablaghArzy, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="نوع ارز" DataMemberBinding="{Binding NoeArz, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_NoeArz}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_NoeArz}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding NoeArz }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding NoeArz, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="نرخ ارز" DataMemberBinding="{Binding NerkhArz, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_NerkhArz}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_NerkhArz}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding NerkhArz }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding NerkhArz, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn Header="ردیف" DataMemberBinding="{Binding Radif, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Radif}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Radif}"
+ TextAlignment="Right">
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Radif }" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                                <telerik:GridViewDataColumn.CellEditTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding Radif, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellEditTemplate>
+                            </telerik:GridViewDataColumn>
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource BottomGridViewBorder}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="0" Width="100" Height="33" Content="پیوست" />
+                    <Button Grid.Row="0" Grid.Column="1" Width="100" Height="33" Content="مستندات" />
+                    <Button Grid.Row="0" Grid.Column="2" Width="100" Height="33" Content="چاپ سند"  />
+                    <Button Grid.Row="0" Grid.Column="3" Width="100" Height="33" Content="جستجو"  />
+                    <Button Grid.Row="1" Grid.Column="0" Width="100" Height="33" Content="درج ردیف" />
+                    <Button Grid.Row="1" Grid.Column="1" Width="100" Height="33" Content="حذف ردیف" />
+                    <Button Grid.Row="1" Grid.Column="2" Width="100" Height="33" Content="درج سند"  />
+                    <Button Grid.Row="1" Grid.Column="3" Width="100" Height="33" Content="تایید کنندگان"  />
+                    <!-- -->
+                    <Grid Grid.Column="5" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="2" Grid.Row="0" Text="جمع بدهکار:" Grid.Column="0" />
+                        <TextBlock Margin="2" Grid.Row="1" Text="جمع بستانکار:"  Grid.Column="0" />
+                        <TextBlock Margin="2" Grid.Row="2" Text="مانده:"  Grid.Column="0" />
+                        <TextBlock Margin="2" Grid.Row="0" Text="مقدار تست" Grid.Column="1" />
+                        <TextBlock Margin="2" Grid.Row="1" Text="مقدار تست" Grid.Column="1" />
+                        <TextBlock Margin="2" Grid.Row="2" Text="مقدار تست" Grid.Column="1" />
+
+                    </Grid>
+
+
+
+                </Grid>
+            </Border>
+        </Grid>
+        
+           
+      
+    </Grid>
+
+</navigation:Page>
+
+
+

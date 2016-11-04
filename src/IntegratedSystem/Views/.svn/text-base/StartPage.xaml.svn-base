@@ -1,0 +1,60 @@
+﻿<navigation:Page FontFamily="tahoma" x:Class="IntegratedSystem.StartPage" 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           d:DesignWidth="640" d:DesignHeight="480"
+           Title="StartPage Page">
+    <Grid x:Name="LayoutRoot" Opacity="0.8">
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="0.5*"/>
+    		<RowDefinition Height="0.5*"/>
+    	</Grid.RowDefinitions>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="0.5*"/>
+    		<ColumnDefinition Width="0.5*"/>
+    	</Grid.ColumnDefinitions>
+    	<Border BorderBrush="Black" BorderThickness="1" Margin="0,8,16,0" CornerRadius="4" Background="#FFCECECE" Height="224" VerticalAlignment="Top" HorizontalAlignment="Right" Width="296">
+    		<Grid Margin="31,7">
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="0.692*"/>
+    				<RowDefinition Height="0.308*"/>
+    			</Grid.RowDefinitions>
+    			<Image Margin="40,8,48,16" Source="/IntegratedSystem;component/images/accounting-logo.jpg"/>
+                <HyperlinkButton NavigateUri="/Accounting/AccountingStartPage" Content="حسابداری" Margin="0,4,75,0" Grid.Row="1" FontSize="14.667" FontWeight="Bold" Background="#001D1414" Foreground="#FF131518" HorizontalAlignment="Right" Width="80" VerticalAlignment="Top"/>
+    		</Grid>
+    	</Border>
+		<Border BorderBrush="Black" Grid.Column="1" BorderThickness="1" Margin="8,8,0,0" CornerRadius="4" Background="#FFCECECE" Height="224" VerticalAlignment="Top" HorizontalAlignment="Left" Width="296">
+    		<Grid Margin="31,7">
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="0.692*"/>
+    				<RowDefinition Height="0.308*"/>
+    			</Grid.RowDefinitions>
+    			<Image Margin="40,8,40,16" Source="/IntegratedSystem;component/images/Storage3.jpg"/>
+    			<HyperlinkButton Content="انبارداری" Margin="0,5,80,0" Grid.Row="1" FontSize="14.667" FontWeight="Bold" Background="#001D1414" Foreground="#FF131518" HorizontalAlignment="Right" Width="64" VerticalAlignment="Top" RenderTransformOrigin="1.125,0.444"/>
+    		</Grid>
+    	</Border>
+		<Border BorderBrush="Black" Grid.Column="0"  Grid.Row="1" BorderThickness="1" Margin="0,8,16,0" CornerRadius="4" Background="#FFCECECE" HorizontalAlignment="Right" Width="296" Height="224" VerticalAlignment="Top">
+    		<Grid Margin="31,7">
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="0.692*"/>
+    				<RowDefinition Height="0.308*"/>
+    			</Grid.RowDefinitions>
+    			<Image Margin="34,8,46,16" Source="/IntegratedSystem;component/images/65162_SalaryandWages.jpg"/>
+    			<HyperlinkButton Content="حقوق و دست مزد" Margin="0,0,56,0" Grid.Row="1" FontSize="14.667" FontWeight="Bold" Background="#001D1414" Foreground="#FF131518" HorizontalAlignment="Right" Width="128" VerticalAlignment="Top"/>
+    		</Grid>
+    	</Border>
+		<Border BorderBrush="Black" Grid.Column="1"  Grid.Row="1" BorderThickness="1" Margin="8,8,0,0" CornerRadius="4" Background="#FFCECECE" Height="224" VerticalAlignment="Top" HorizontalAlignment="Left" Width="296">
+    		<Grid Margin="31,7">
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="0.692*"/>
+    				<RowDefinition Height="0.308*"/>
+    			</Grid.RowDefinitions>
+    			<Image Margin="40,8,40,16" Source="/IntegratedSystem;component/images/L6343071470631.jpg"/>
+    			<HyperlinkButton Content="حضور و غیاب" Margin="0,8,40,0" Grid.Row="1" FontSize="14.667" FontWeight="Bold" Background="#001D1414" Foreground="#FF131518" HorizontalAlignment="Right" Width="128" VerticalAlignment="Top"/>
+    		</Grid>
+    	</Border>
+    	<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="8" Margin="-472,104,0,0" VerticalAlignment="Top" Width="312"/></Grid>
+</navigation:Page>

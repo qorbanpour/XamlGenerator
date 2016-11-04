@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/IntegratedSystem/!svn/ver/96/IntegratedSystem
+END
+App.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/IntegratedSystem/!svn/ver/91/IntegratedSystem/App.xaml
+END
+MainPage.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/IntegratedSystem/!svn/ver/96/IntegratedSystem/MainPage.xaml
+END
+App.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/IntegratedSystem/!svn/ver/79/IntegratedSystem/App.xaml.cs
+END
+MainPage.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/IntegratedSystem/!svn/ver/96/IntegratedSystem/MainPage.xaml.cs
+END
+InvalidAccess.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/IntegratedSystem/!svn/ver/3/IntegratedSystem/InvalidAccess.xaml
+END
+IntegratedSystem.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/IntegratedSystem/!svn/ver/92/IntegratedSystem/IntegratedSystem.csproj
+END
+AccessDenied.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/IntegratedSystem/!svn/ver/3/IntegratedSystem/AccessDenied.xaml
+END
+img0.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/IntegratedSystem/!svn/ver/3/IntegratedSystem/img0.jpg
+END
+InvalidAccess.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/IntegratedSystem/!svn/ver/3/IntegratedSystem/InvalidAccess.xaml.cs
+END
+AccessDenied.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/IntegratedSystem/!svn/ver/3/IntegratedSystem/AccessDenied.xaml.cs
+END

@@ -1,0 +1,646 @@
+<navigation:Page x:Class="IntegratedSystem.EntitySetEntityMetaDataDMD2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+     xmlns:e="clr-namespace:IntegratedSystem.Web"  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+        <Grid FlowDirection="RightToLeft" x:Name="LayoutRoot">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="600*" />
+			<ColumnDefinition Width="300*"/>
+		</Grid.ColumnDefinitions>
+		<Grid FlowDirection="RightToLeft" Grid.Column="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+               <RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+            <!-- 
+                Here is the place for GridView View and Buttons
+            -->
+            <Border Grid.Row="0" Style="{StaticResource TopGridViewBorder}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding DisplayName}" Grid.Column="0" Foreground="White" FontFamily="Tahoma" FontSize="15">                        
+                    </TextBlock>
+                    <Button Content="Save" Width="90" Height="33" Grid.Column="1" Click="Button_Click_1"></Button>
+                    <Button Content="Cancel" Width="90" Height="33" Grid.Column="2" Click="Button_Click"></Button>
+                </Grid>
+            </Border>
+           
+           <Border Grid.Row="1" Style="{StaticResource MiddleGridViewBorder}">
+                <Grid> 
+                    <telerik:RadDomainDataSource x:Name="GetEntityMetaDatasByEntitySetQueryDataSource"
+AutoLoad="True"
+QueryName="GetEntityMetaDatasByEntitySetQuery" >
+<telerik:RadDomainDataSource.DomainContext>
+<e:IntegratedSystemDomainContext /></telerik:RadDomainDataSource.DomainContext>
+                        <telerik:RadDomainDataSource.QueryParameters>
+                            <telerik:QueryParameter ParameterName="EntitySet_id" Value="{Binding Id}"></telerik:QueryParameter>
+                        </telerik:RadDomainDataSource.QueryParameters>
+                    </telerik:RadDomainDataSource>
+<telerik:RadGridView AutoGenerateColumns="False" IsReadOnly="{Binding IsFormReadOnly}" HorizontalAlignment="Stretch" Name="EntityMetaDatasRadDetailsGrid" ItemsSource="{Binding DataView, ElementName=GetEntityMetaDatasByEntitySetQueryDataSource}" IsBusy="{Binding IsBusy, ElementName=GetEntityMetaDatasByEntitySetQueryDataSource}" VerticalAlignment="Stretch" >
+<telerik:RadGridView.Columns>
+ <telerik:GridViewDataColumn Header="PropertyName" DataMemberBinding="{Binding PropertyName, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_PropertyName}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_PropertyName}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding PropertyName }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding PropertyName, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+<telerik:GridViewCheckBoxColumn Header="Nullable"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Nullable}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Nullable}"
+  DataMemberBinding="{Binding Nullable, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding Nullable}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding Nullable, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+ <telerik:GridViewDataColumn Header="TypeUsageName" DataMemberBinding="{Binding TypeUsageName, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_TypeUsageName}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_TypeUsageName}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding TypeUsageName }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding TypeUsageName, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="DefaultValue" DataMemberBinding="{Binding DefaultValue, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_DefaultValue}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_DefaultValue}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding DefaultValue }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding DefaultValue, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="Documentation" DataMemberBinding="{Binding Documentation, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Documentation}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Documentation}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding Documentation }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding Documentation, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+<telerik:GridViewCheckBoxColumn Header="IsKey"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_IsKey}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsKey}"
+  DataMemberBinding="{Binding IsKey, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding IsKey}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding IsKey, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+<telerik:GridViewCheckBoxColumn Header="IsForeignKey"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_IsForeignKey}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsForeignKey}"
+  DataMemberBinding="{Binding IsForeignKey, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding IsForeignKey}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding IsForeignKey, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+ <telerik:GridViewDataColumn Header="ForeignEntityType" DataMemberBinding="{Binding ForeignEntityType, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_ForeignEntityType}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_ForeignEntityType}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding ForeignEntityType }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding ForeignEntityType, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="ForeingEntitySet" DataMemberBinding="{Binding ForeingEntitySet, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_ForeingEntitySet}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_ForeingEntitySet}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding ForeingEntitySet }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding ForeingEntitySet, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+<telerik:GridViewCheckBoxColumn Header="IsCollectionEntity"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_IsCollectionEntity}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsCollectionEntity}"
+  DataMemberBinding="{Binding IsCollectionEntity, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding IsCollectionEntity}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding IsCollectionEntity, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+ <telerik:GridViewDataColumn Header="EntitySet_id" DataMemberBinding="{Binding EntitySet_id, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_EntitySet_id}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_EntitySet_id}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding EntitySet_id }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding EntitySet_id, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+<telerik:GridViewCheckBoxColumn Header="IsFieldReadOnly"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_IsFieldReadOnly}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsFieldReadOnly}"
+  DataMemberBinding="{Binding IsFieldReadOnly, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding IsFieldReadOnly}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding IsFieldReadOnly, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+<telerik:GridViewCheckBoxColumn Header="IsChildDetailGrid"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_IsChildDetailGrid}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsChildDetailGrid}"
+  DataMemberBinding="{Binding IsChildDetailGrid, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding IsChildDetailGrid}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding IsChildDetailGrid, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+ <telerik:GridViewDataColumn Header="Translation" DataMemberBinding="{Binding Translation, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Translation}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Translation}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding Translation }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding Translation, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+<telerik:GridViewCheckBoxColumn Header="IsList"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_IsList}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsList}"
+  DataMemberBinding="{Binding IsList, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding IsList}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding IsList, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+ <telerik:GridViewDataColumn Header="ListTableName" DataMemberBinding="{Binding ListTableName, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_ListTableName}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_ListTableName}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding ListTableName }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding ListTableName, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="TabSequence" DataMemberBinding="{Binding TabSequence, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_TabSequence}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_TabSequence}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding TabSequence }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding TabSequence, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="FieldOrder" DataMemberBinding="{Binding FieldOrder, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_FieldOrder}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_FieldOrder}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding FieldOrder }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding FieldOrder, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="FieldGroup" DataMemberBinding="{Binding FieldGroup, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_FieldGroup}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_FieldGroup}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding FieldGroup }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding FieldGroup, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="Tooltip" DataMemberBinding="{Binding Tooltip, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Tooltip}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Tooltip}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding Tooltip }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding Tooltip, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+<telerik:GridViewCheckBoxColumn Header="IsInVisible"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_IsInVisible}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsInVisible}"
+  DataMemberBinding="{Binding IsInVisible, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding IsInVisible}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding IsInVisible, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+ <telerik:GridViewDataColumn Header="EditorClasspath" DataMemberBinding="{Binding EditorClasspath, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_EditorClasspath}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_EditorClasspath}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding EditorClasspath }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding EditorClasspath, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+<telerik:GridViewCheckBoxColumn Header="IsVirtual"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_IsVirtual}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsVirtual}"
+  DataMemberBinding="{Binding IsVirtual, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding IsVirtual}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding IsVirtual, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+<telerik:GridViewCheckBoxColumn Header="IsButton"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_IsButton}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsButton}"
+  DataMemberBinding="{Binding IsButton, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding IsButton}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding IsButton, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+ <telerik:GridViewDataColumn Header="DisplayMemberName" DataMemberBinding="{Binding DisplayMemberName, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_DisplayMemberName}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_DisplayMemberName}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding DisplayMemberName }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding DisplayMemberName, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="FooterInfoes" DataMemberBinding="{Binding FooterInfoes, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_FooterInfoes}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_FooterInfoes}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding FooterInfoes }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding FooterInfoes, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+</telerik:RadGridView.Columns>
+</telerik:RadGridView>
+
+</Grid>
+           </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource BottomGridViewBorder}">
+                <Grid></Grid>
+            </Border>
+		</Grid>
+		<Grid Grid.Column="1" FlowDirection="RightToLeft">			
+			<Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+            <!-- 
+                Here is the place for DataForm                     
+            -->
+
+            <Border Grid.Row="0" Style="{StaticResource TopDataFormBorder}" >
+                <Grid></Grid>
+            </Border>
+       
+            <Border Grid.Row="1" Style="{StaticResource MiddleDataFormBorder}">
+                <Grid><Grid>
+<Grid.Resources>
+<DataTemplate x:Key="EntityMetaDatasRadDataFormTemplate">
+<Grid>
+<Grid.ColumnDefinitions>
+<ColumnDefinition/>
+<ColumnDefinition/>
+<ColumnDefinition/>
+<ColumnDefinition/>
+<ColumnDefinition/>
+<ColumnDefinition/>
+</Grid.ColumnDefinitions>
+<Grid.RowDefinitions>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+
+</Grid.RowDefinitions>
+<TextBlock Margin="10,5,5,5" Text="PropertyName"  Grid.Row="0" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_PropertyName}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding PropertyName , Mode=TwoWay}" Grid.Row="0" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_PropertyName}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_PropertyName}"
+ />
+<TextBlock Margin="10,5,5,5" Text="Nullable"  Grid.Row="0" Grid.Column="2"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Nullable}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding Nullable,Mode=TwoWay}" Grid.Row="0" Grid.Column="3"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Nullable}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Nullable}"
+ /><TextBlock Margin="10,5,5,5" Text="TypeUsageName"  Grid.Row="0" Grid.Column="4"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_TypeUsageName}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding TypeUsageName , Mode=TwoWay}" Grid.Row="0" Grid.Column="5"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_TypeUsageName}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_TypeUsageName}"
+ />
+<TextBlock Margin="10,5,5,5" Text="DefaultValue"  Grid.Row="1" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_DefaultValue}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding DefaultValue , Mode=TwoWay}" Grid.Row="1" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_DefaultValue}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_DefaultValue}"
+ />
+<TextBlock Margin="10,5,5,5" Text="Documentation"  Grid.Row="1" Grid.Column="2"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Documentation}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding Documentation , Mode=TwoWay}" Grid.Row="1" Grid.Column="3"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Documentation}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Documentation}"
+ />
+<TextBlock Margin="10,5,5,5" Text="IsKey"  Grid.Row="1" Grid.Column="4"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsKey}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding IsKey,Mode=TwoWay}" Grid.Row="1" Grid.Column="5"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsKey}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsKey}"
+ /><TextBlock Margin="10,5,5,5" Text="IsForeignKey"  Grid.Row="2" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsForeignKey}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding IsForeignKey,Mode=TwoWay}" Grid.Row="2" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsForeignKey}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsForeignKey}"
+ /><TextBlock Margin="10,5,5,5" Text="ForeignEntityType"  Grid.Row="2" Grid.Column="2"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_ForeignEntityType}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding ForeignEntityType , Mode=TwoWay}" Grid.Row="2" Grid.Column="3"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_ForeignEntityType}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_ForeignEntityType}"
+ />
+<TextBlock Margin="10,5,5,5" Text="ForeingEntitySet"  Grid.Row="2" Grid.Column="4"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_ForeingEntitySet}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding ForeingEntitySet , Mode=TwoWay}" Grid.Row="2" Grid.Column="5"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_ForeingEntitySet}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_ForeingEntitySet}"
+ />
+<TextBlock Margin="10,5,5,5" Text="IsCollectionEntity"  Grid.Row="3" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsCollectionEntity}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding IsCollectionEntity,Mode=TwoWay}" Grid.Row="3" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsCollectionEntity}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsCollectionEntity}"
+ /><TextBlock Margin="10,5,5,5" Text="EntitySet_id"  Grid.Row="3" Grid.Column="2"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_EntitySet_id}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding EntitySet_id , Mode=TwoWay}" Grid.Row="3" Grid.Column="3"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_EntitySet_id}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_EntitySet_id}"
+ />
+<TextBlock Margin="10,5,5,5" Text="IsFieldReadOnly"  Grid.Row="3" Grid.Column="4"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsFieldReadOnly}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding IsFieldReadOnly,Mode=TwoWay}" Grid.Row="3" Grid.Column="5"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsFieldReadOnly}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsFieldReadOnly}"
+ /><TextBlock Margin="10,5,5,5" Text="IsChildDetailGrid"  Grid.Row="4" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsChildDetailGrid}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding IsChildDetailGrid,Mode=TwoWay}" Grid.Row="4" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsChildDetailGrid}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsChildDetailGrid}"
+ /><TextBlock Margin="10,5,5,5" Text="Translation"  Grid.Row="4" Grid.Column="2"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Translation}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding Translation , Mode=TwoWay}" Grid.Row="4" Grid.Column="3"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Translation}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Translation}"
+ />
+<TextBlock Margin="10,5,5,5" Text="IsList"  Grid.Row="4" Grid.Column="4"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsList}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding IsList,Mode=TwoWay}" Grid.Row="4" Grid.Column="5"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsList}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsList}"
+ /><TextBlock Margin="10,5,5,5" Text="ListTableName"  Grid.Row="5" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_ListTableName}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding ListTableName , Mode=TwoWay}" Grid.Row="5" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_ListTableName}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_ListTableName}"
+ />
+<TextBlock Margin="10,5,5,5" Text="TabSequence"  Grid.Row="5" Grid.Column="2"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_TabSequence}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding TabSequence , Mode=TwoWay}" Grid.Row="5" Grid.Column="3"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_TabSequence}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_TabSequence}"
+ />
+<TextBlock Margin="10,5,5,5" Text="FieldOrder"  Grid.Row="5" Grid.Column="4"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_FieldOrder}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding FieldOrder , Mode=TwoWay}" Grid.Row="5" Grid.Column="5"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_FieldOrder}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_FieldOrder}"
+ />
+<TextBlock Margin="10,5,5,5" Text="FieldGroup"  Grid.Row="6" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_FieldGroup}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding FieldGroup , Mode=TwoWay}" Grid.Row="6" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_FieldGroup}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_FieldGroup}"
+ />
+<TextBlock Margin="10,5,5,5" Text="Tooltip"  Grid.Row="6" Grid.Column="2"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Tooltip}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding Tooltip , Mode=TwoWay}" Grid.Row="6" Grid.Column="3"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Tooltip}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Tooltip}"
+ />
+<TextBlock Margin="10,5,5,5" Text="IsInVisible"  Grid.Row="6" Grid.Column="4"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsInVisible}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding IsInVisible,Mode=TwoWay}" Grid.Row="6" Grid.Column="5"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsInVisible}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsInVisible}"
+ /><TextBlock Margin="10,5,5,5" Text="EditorClasspath"  Grid.Row="7" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_EditorClasspath}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding EditorClasspath , Mode=TwoWay}" Grid.Row="7" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_EditorClasspath}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_EditorClasspath}"
+ />
+<TextBlock Margin="10,5,5,5" Text="IsVirtual"  Grid.Row="7" Grid.Column="2"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsVirtual}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding IsVirtual,Mode=TwoWay}" Grid.Row="7" Grid.Column="3"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsVirtual}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsVirtual}"
+ /><TextBlock Margin="10,5,5,5" Text="IsButton"  Grid.Row="7" Grid.Column="4"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsButton}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding IsButton,Mode=TwoWay}" Grid.Row="7" Grid.Column="5"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsButton}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsButton}"
+ /><TextBlock Margin="10,5,5,5" Text="DisplayMemberName"  Grid.Row="8" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_DisplayMemberName}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding DisplayMemberName , Mode=TwoWay}" Grid.Row="8" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_DisplayMemberName}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_DisplayMemberName}"
+ />
+<TextBlock Margin="10,5,5,5" Text="FooterInfoes"  Grid.Row="8" Grid.Column="2"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_FooterInfoes}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding FooterInfoes , Mode=TwoWay}" Grid.Row="8" Grid.Column="3"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_FooterInfoes}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_FooterInfoes}"
+ />
+
+</Grid>
+</DataTemplate>
+</Grid.Resources>
+<telerik:RadDataForm FlowDirection="RightToLeft" x:Name="EntityMetaDatasRadDataForm" EditEnded="EntityMetaDatasRadDataForm_EditEnded"
+AutoGenerateFields="False"
+ReadOnlyTemplate="{StaticResource EntityMetaDatasRadDataFormTemplate}"
+EditTemplate="{StaticResource EntityMetaDatasRadDataFormTemplate}"
+NewItemTemplate="{StaticResource EntityMetaDatasRadDataFormTemplate}"
+ItemsSource="{Binding DataView, ElementName=GetEntityMetaDatasByEntitySetQueryDataSource}">
+</telerik:RadDataForm>
+</Grid>
+
+</Grid>
+            </Border>
+    
+            <Border Grid.Row="2" Style="{StaticResource BottomDataFormBorder}">
+                <Grid></Grid>
+            </Border>        </Grid>
+        </Grid>
+ 
+</navigation:Page>

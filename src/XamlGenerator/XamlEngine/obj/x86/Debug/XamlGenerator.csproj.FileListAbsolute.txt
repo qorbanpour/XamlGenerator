@@ -1,0 +1,12 @@
+C:\Users\Vahid\documents\visual studio 2010\Projects\XamlGenerator\XamlGenerator\bin\Debug\XamlGenerator.exe.config
+C:\Users\Vahid\documents\visual studio 2010\Projects\XamlGenerator\XamlGenerator\bin\Debug\XamlGenerator.exe
+C:\Users\Vahid\documents\visual studio 2010\Projects\XamlGenerator\XamlGenerator\bin\Debug\XamlGenerator.pdb
+C:\Users\Vahid\documents\visual studio 2010\Projects\XamlGenerator\XamlGenerator\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Vahid\documents\visual studio 2010\Projects\XamlGenerator\XamlGenerator\obj\x86\Debug\XamlGenerator.exe
+C:\Users\Vahid\documents\visual studio 2010\Projects\XamlGenerator\XamlGenerator\obj\x86\Debug\XamlGenerator.pdb
+D:\New DEsktop Jadid\XamlGenerator\XamlGenerator\bin\Debug\XamlGenerator.exe.config
+D:\New DEsktop Jadid\XamlGenerator\XamlGenerator\obj\x86\Debug\XamlGenerator.exe
+D:\New DEsktop Jadid\XamlGenerator\XamlGenerator\obj\x86\Debug\XamlGenerator.pdb
+D:\New DEsktop Jadid\XamlGenerator\XamlGenerator\bin\Debug\XamlGenerator.exe
+D:\New DEsktop Jadid\XamlGenerator\XamlGenerator\bin\Debug\XamlGenerator.pdb
+D:\New DEsktop Jadid\XamlGenerator\XamlGenerator\obj\x86\Debug\ResolveAssemblyReference.cache

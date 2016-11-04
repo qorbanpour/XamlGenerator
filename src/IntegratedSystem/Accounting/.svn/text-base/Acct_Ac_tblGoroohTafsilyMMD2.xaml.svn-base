@@ -1,0 +1,189 @@
+<navigation:Page x:Class="IntegratedSystem.Acct_Ac_tblGoroohTafsilyMMD2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+     xmlns:e="clr-namespace:IntegratedSystem.Web"  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    FontFamily="Tahoma"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+        <Grid FlowDirection="RightToLeft" x:Name="LayoutRoot">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="600*" />
+			<ColumnDefinition Width="300*"/>
+		</Grid.ColumnDefinitions>
+		<Grid FlowDirection="RightToLeft" Grid.Column="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+               <RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+            <!-- 
+                Here is the place for GridView View and Buttons
+            -->
+            <Border Grid.Row="0" Style="{StaticResource TopGridViewBorder}" >
+                <Grid></Grid>
+            </Border>
+           
+           <Border Grid.Row="1" Style="{StaticResource MiddleGridViewBorder}">
+                <Grid> <telerik:RadDomainDataSource x:Name="GetAcct_Ac_tblGoroohTafsilyQueryDataSource"
+AutoLoad="True"
+QueryName="GetAcct_Ac_tblGoroohTafsilyQuery" >
+<telerik:RadDomainDataSource.DomainContext>
+<e:IntegratedSystemDomainContext /></telerik:RadDomainDataSource.DomainContext>
+</telerik:RadDomainDataSource>
+
+
+
+<telerik:RadGridView AutoGenerateColumns="False" IsReadOnly="{Binding IsFormReadOnly}" HorizontalAlignment="Stretch" Name="Acct_Ac_tblGoroohTafsilyRadGrid" ItemsSource="{Binding DataView, ElementName=GetAcct_Ac_tblGoroohTafsilyQueryDataSource}" IsBusy="{Binding IsBusy, ElementName=GetAcct_Ac_tblGoroohTafsilyQueryDataSource}" VerticalAlignment="Stretch" >
+<telerik:RadGridView.Columns>
+ <telerik:GridViewDataColumn Header="کد" DataMemberBinding="{Binding GoroohTafsily, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_GoroohTafsily}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_GoroohTafsily}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding GoroohTafsily }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding GoroohTafsily, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="شرح گروه تفصیلی" DataMemberBinding="{Binding SharhGTafsily, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_SharhGTafsily}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_SharhGTafsily}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding SharhGTafsily }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding SharhGTafsily, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+<telerik:GridViewCheckBoxColumn Header="تعداد"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Tedad}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Tedad}"
+  DataMemberBinding="{Binding Tedad, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding Tedad}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding Tedad, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+<telerik:GridViewCheckBoxColumn Header="پروژه"
+  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Projeh}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Projeh}"
+  DataMemberBinding="{Binding Projeh, Mode=TwoWay}"
+TextAlignment="Center">
+<telerik:GridViewCheckBoxColumn.CellTemplate>
+<DataTemplate>
+<CheckBox IsChecked="{Binding Projeh}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellTemplate>
+<telerik:GridViewCheckBoxColumn.CellEditTemplate>
+<DataTemplate>
+<CheckBox  Margin="5, 0, 0, 0"
+VerticalAlignment="Center"
+IsChecked="{Binding Projeh, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewCheckBoxColumn.CellEditTemplate>
+</telerik:GridViewCheckBoxColumn>
+</telerik:RadGridView.Columns>
+</telerik:RadGridView>
+
+</Grid>
+           </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource BottomGridViewBorder}">
+                <Grid></Grid>
+            </Border>
+		</Grid>
+		<Grid Grid.Column="1" FlowDirection="RightToLeft">			
+			<Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+            <!-- 
+                Here is the place for DataForm                     
+            -->
+
+            <Border Grid.Row="0" Style="{StaticResource TopDataFormBorder}" >
+                <Grid></Grid>
+            </Border>
+       
+            <Border Grid.Row="1" Style="{StaticResource MiddleDataFormBorder}">
+                <Grid><Grid>
+<Grid.Resources>
+<DataTemplate x:Key="Acct_Ac_tblGoroohTafsilyRadDataFormTemplate">
+<Grid>
+<Grid.ColumnDefinitions>
+<ColumnDefinition/>
+<ColumnDefinition/>
+</Grid.ColumnDefinitions>
+<Grid.RowDefinitions>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+
+</Grid.RowDefinitions>
+<TextBlock Margin="10,5,5,5" Text="کد"  Grid.Row="0" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_GoroohTafsily}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding GoroohTafsily , Mode=TwoWay}" Grid.Row="0" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_GoroohTafsily}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_GoroohTafsily}"
+ />
+<TextBlock Margin="10,5,5,5" Text="شرح گروه تفصیلی"  Grid.Row="1" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_SharhGTafsily}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding SharhGTafsily , Mode=TwoWay}" Grid.Row="1" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_SharhGTafsily}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_SharhGTafsily}"
+ />
+<TextBlock Margin="10,5,5,5" Text="تعداد"  Grid.Row="2" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Tedad}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding Tedad,Mode=TwoWay}" Grid.Row="2" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Tedad}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Tedad}"
+ /><TextBlock Margin="10,5,5,5" Text="پروژه"  Grid.Row="3" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Projeh}" 
+ />
+<CheckBox Margin="10,5,5,5" IsChecked="{Binding Projeh,Mode=TwoWay}" Grid.Row="3" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Projeh}" 
+ IsEnabled="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Projeh}"
+ />
+</Grid>
+</DataTemplate>
+</Grid.Resources>
+<telerik:RadDataForm EditEnded="Acct_Ac_tblGoroohTafsilyRadDataForm_EditEnded" FlowDirection="RightToLeft" x:Name="Acct_Ac_tblGoroohTafsilyRadDataForm"
+AutoGenerateFields="False"
+ReadOnlyTemplate="{StaticResource Acct_Ac_tblGoroohTafsilyRadDataFormTemplate}"
+EditTemplate="{StaticResource Acct_Ac_tblGoroohTafsilyRadDataFormTemplate}"
+NewItemTemplate="{StaticResource Acct_Ac_tblGoroohTafsilyRadDataFormTemplate}"
+ItemsSource="{Binding DataView, ElementName=GetAcct_Ac_tblGoroohTafsilyQueryDataSource}">
+</telerik:RadDataForm>
+</Grid>
+
+</Grid>
+            </Border>
+    
+            <Border Grid.Row="2" Style="{StaticResource BottomDataFormBorder}">
+                <Grid></Grid>
+            </Border>        </Grid>
+        </Grid>
+ 
+</navigation:Page>

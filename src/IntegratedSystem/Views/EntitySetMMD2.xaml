@@ -1,0 +1,187 @@
+﻿<navigation:Page x:Class="IntegratedSystem.EntitySetMMD2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="Tahoma"
+    xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+     xmlns:e="clr-namespace:IntegratedSystem.Web"  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    mc:Ignorable="d"
+    d:DesignHeight="480" d:DesignWidth="640">
+        <Grid FlowDirection="RightToLeft" x:Name="LayoutRoot">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="600*" />
+			<ColumnDefinition Width="300*"/>
+		</Grid.ColumnDefinitions>
+		<Grid FlowDirection="RightToLeft" Grid.Column="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+               <RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+            <!-- 
+                Here is the place for GridView View and Buttons
+            -->
+            <Border Grid.Row="0" Style="{StaticResource TopGridViewBorder}" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="مشاهده متا دیتا" Width="90" Height="33" FontFamily="Tahoma" Click="Button1_Click"></Button>
+                    <Button Grid.Column="1" Content="Save" Width="90" Height="33" HorizontalAlignment="Left"  Name="button1" Click="button1_Click_1" />
+                </Grid>
+            </Border>
+           
+           <Border Grid.Row="1" Style="{StaticResource MiddleGridViewBorder}">
+                <Grid> <telerik:RadDomainDataSource x:Name="GetEntitySetsQueryDataSource"
+AutoLoad="True"
+QueryName="GetEntitySetsQuery" >
+<telerik:RadDomainDataSource.DomainContext>
+<e:IntegratedSystemDomainContext /></telerik:RadDomainDataSource.DomainContext>
+</telerik:RadDomainDataSource>
+
+
+
+<telerik:RadGridView  AutoGenerateColumns="False" IsReadOnly="{Binding IsFormReadOnly}" HorizontalAlignment="Stretch" Name="EntitySetsRadGrid" ItemsSource="{Binding DataView, ElementName=GetEntitySetsQueryDataSource}" IsBusy="{Binding IsBusy, ElementName=GetEntitySetsQueryDataSource}" VerticalAlignment="Stretch" >
+<telerik:RadGridView.Columns>
+ <telerik:GridViewDataColumn Header="EntitySet Name" DataMemberBinding="{Binding EntitySetName, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_EntitySetName}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_EntitySetName}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding EntitySetName }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding EntitySetName, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="EntityType Name" DataMemberBinding="{Binding EntityTypeName, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_EntityTypeName}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_EntityTypeName}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding EntityTypeName }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding EntityTypeName, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="FormName" DataMemberBinding="{Binding FormName, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_FormName}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_FormName}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding FormName }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding FormName, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="SubsystemID" DataMemberBinding="{Binding SubsystemID, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_SubsystemID}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_SubsystemID}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding SubsystemID }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding SubsystemID, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+</telerik:RadGridView.Columns>
+</telerik:RadGridView>
+
+</Grid>
+           </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource BottomGridViewBorder}">
+                <Grid></Grid>
+            </Border>
+		</Grid>
+		<Grid Grid.Column="1" FlowDirection="RightToLeft">			
+			<Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+            <!-- 
+                Here is the place for DataForm                     
+            -->
+
+            <Border Grid.Row="0" Style="{StaticResource TopDataFormBorder}" >
+                <Grid></Grid>
+            </Border>
+       
+            <Border Grid.Row="1" Style="{StaticResource MiddleDataFormBorder}">
+                <Grid><Grid>
+<Grid.Resources>
+<DataTemplate x:Key="EntitySetsRadDataFormTemplate">
+<Grid>
+<Grid.ColumnDefinitions>
+<ColumnDefinition/>
+<ColumnDefinition/>
+</Grid.ColumnDefinitions>
+<Grid.RowDefinitions>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+
+</Grid.RowDefinitions>
+<TextBlock Margin="10,5,5,5" Text="EntitySet Name"  Grid.Row="0" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_EntitySetName}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding EntitySetName , Mode=TwoWay}" Grid.Row="0" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_EntitySetName}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_EntitySetName}"
+ />
+<TextBlock Margin="10,5,5,5" Text="EntityType Name"  Grid.Row="1" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_EntityTypeName}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding EntityTypeName , Mode=TwoWay}" Grid.Row="1" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_EntityTypeName}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_EntityTypeName}"
+ />
+<TextBlock Margin="10,5,5,5" Text="FormName"  Grid.Row="2" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_FormName}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding FormName , Mode=TwoWay}" Grid.Row="2" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_FormName}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_FormName}"
+ />
+<TextBlock Margin="10,5,5,5" Text="SubsystemID"  Grid.Row="3" Grid.Column="0"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_SubsystemID}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding SubsystemID , Mode=TwoWay}" Grid.Row="3" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_SubsystemID}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_SubsystemID}"
+ />
+
+</Grid>
+</DataTemplate>
+</Grid.Resources>
+<telerik:RadDataForm FlowDirection="RightToLeft" x:Name="EntitySetsRadDataForm"
+AutoGenerateFields="False"
+ReadOnlyTemplate="{StaticResource EntitySetsRadDataFormTemplate}"
+EditTemplate="{StaticResource EntitySetsRadDataFormTemplate}"
+NewItemTemplate="{StaticResource EntitySetsRadDataFormTemplate}"
+ItemsSource="{Binding DataView, ElementName=GetEntitySetsQueryDataSource}">
+</telerik:RadDataForm>
+</Grid>
+
+</Grid>
+            </Border>
+    
+            <Border Grid.Row="2" Style="{StaticResource BottomDataFormBorder}">
+                <Grid></Grid>
+            </Border>        </Grid>
+        </Grid>
+ 
+</navigation:Page>

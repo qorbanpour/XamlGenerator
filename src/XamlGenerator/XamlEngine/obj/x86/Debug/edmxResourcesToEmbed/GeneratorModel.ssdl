@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CommonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="CommonModelStoreContainer">
+    <EntitySet Name="AD_Client" EntityType="CommonModel.Store.AD_Client" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AD_Form" EntityType="CommonModel.Store.AD_Form" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AD_FormDetail" EntityType="CommonModel.Store.AD_FormDetail" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AD_Organization" EntityType="CommonModel.Store.AD_Organization" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AD_Role" EntityType="CommonModel.Store.AD_Role" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AD_RoleAccess" EntityType="CommonModel.Store.AD_RoleAccess" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AD_Subsystem" EntityType="CommonModel.Store.AD_Subsystem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AD_User" EntityType="CommonModel.Store.AD_User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AD_UserRole" EntityType="CommonModel.Store.AD_UserRole" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EntityMetaData" EntityType="CommonModel.Store.EntityMetaData" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EntitySet" EntityType="CommonModel.Store.EntitySet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_AD_FormDetail_AD_Form" Association="CommonModel.Store.FK_AD_FormDetail_AD_Form">
+      <End Role="AD_Form" EntitySet="AD_Form" />
+      <End Role="AD_FormDetail" EntitySet="AD_FormDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AD_Organization_AD_Client" Association="CommonModel.Store.FK_AD_Organization_AD_Client">
+      <End Role="AD_Client" EntitySet="AD_Client" />
+      <End Role="AD_Organization" EntitySet="AD_Organization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AD_RoleAccess_AD_Role" Association="CommonModel.Store.FK_AD_RoleAccess_AD_Role">
+      <End Role="AD_Role" EntitySet="AD_Role" />
+      <End Role="AD_RoleAccess" EntitySet="AD_RoleAccess" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AD_UserRole_AD_User" Association="CommonModel.Store.FK_AD_UserRole_AD_User">
+      <End Role="AD_User" EntitySet="AD_User" />
+      <End Role="AD_UserRole" EntitySet="AD_UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntityMetaData_EntitySet" Association="CommonModel.Store.FK_EntityMetaData_EntitySet">
+      <End Role="EntitySet" EntitySet="EntitySet" />
+      <End Role="EntityMetaData" EntitySet="EntityMetaData" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AD_Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AD_Form">
+    <Key>
+      <PropertyRef Name="FormID" />
+    </Key>
+    <Property Name="FormID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FormName" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Translation" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="SubsystemID" Type="int" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AD_FormDetail">
+    <Key>
+      <PropertyRef Name="FormDetailID" />
+    </Key>
+    <Property Name="FormDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FormID" Type="int" Nullable="false" />
+    <Property Name="EntitySetID" Type="int" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AD_Organization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="Client" Type="int" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AD_Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AD_RoleAccess">
+    <Key>
+      <PropertyRef Name="RoleAccessID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="RoleAccessID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AccessElement" Type="int" Nullable="false" />
+    <Property Name="IsAccessible" Type="bit" />
+    <Property Name="IfReadOnly" Type="bit" />
+    <Property Name="IsDeletable" Type="bit" />
+    <Property Name="IsNewable" Type="bit" />
+    <Property Name="ElementID" Type="int" Nullable="false" />
+    <Property Name="ElementName" Type="nvarchar" MaxLength="500" />
+    <Property Name="ElementPathName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Info" Type="nvarchar" MaxLength="500" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AD_Subsystem">
+    <Key>
+      <PropertyRef Name="SubsystemID" />
+    </Key>
+    <Property Name="SubsystemID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AD_User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="2000" />
+    <Property Name="RepeatPassword" Type="nvarchar" Nullable="false" MaxLength="2000" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="int" />
+    <Property Name="CellNumber" Type="int" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AD_UserRole">
+    <Key>
+      <PropertyRef Name="UserRoleID" />
+    </Key>
+    <Property Name="UserRoleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EntityMetaData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="PropertyName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Nullable" Type="bit" />
+    <Property Name="TypeUsageName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DefaultValue" Type="nvarchar" MaxLength="300" />
+    <Property Name="Documentation" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsKey" Type="bit" />
+    <Property Name="IsForeignKey" Type="bit" />
+    <Property Name="ForeignEntityType" Type="nvarchar" MaxLength="200" />
+    <Property Name="ForeingEntitySet" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsCollectionEntity" Type="bit" />
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EntitySet_id" Type="int" />
+    <Property Name="IsFieldReadOnly" Type="bit" />
+    <Property Name="IsChildDetailGrid" Type="bit" />
+    <Property Name="Translation" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsList" Type="bit" />
+    <Property Name="ListTableName" Type="nvarchar" MaxLength="100" />
+    <Property Name="TabSequence" Type="int" />
+    <Property Name="FieldOrder" Type="int" />
+    <Property Name="FieldGroup" Type="nvarchar" MaxLength="100" />
+    <Property Name="Tooltip" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsInVisible" Type="bit" />
+    <Property Name="EditorClasspath" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsVirtual" Type="bit" />
+    <Property Name="IsButton" Type="bit" />
+    <Property Name="DisplayMemberName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ItemsId" Type="int" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EntitySet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="EntitySetName" Type="varchar" MaxLength="200" />
+    <Property Name="EntityTypeName" Type="nvarchar" MaxLength="200" />
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Updated" Type="datetime" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AD_FormDetail_AD_Form">
+    <End Role="AD_Form" Type="CommonModel.Store.AD_Form" Multiplicity="1" />
+    <End Role="AD_FormDetail" Type="CommonModel.Store.AD_FormDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AD_Form">
+        <PropertyRef Name="FormID" />
+      </Principal>
+      <Dependent Role="AD_FormDetail">
+        <PropertyRef Name="FormID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AD_Organization_AD_Client">
+    <End Role="AD_Client" Type="CommonModel.Store.AD_Client" Multiplicity="1" />
+    <End Role="AD_Organization" Type="CommonModel.Store.AD_Organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AD_Client">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AD_Organization">
+        <PropertyRef Name="Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AD_RoleAccess_AD_Role">
+    <End Role="AD_Role" Type="CommonModel.Store.AD_Role" Multiplicity="1" />
+    <End Role="AD_RoleAccess" Type="CommonModel.Store.AD_RoleAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AD_Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="AD_RoleAccess">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AD_UserRole_AD_User">
+    <End Role="AD_User" Type="CommonModel.Store.AD_User" Multiplicity="1" />
+    <End Role="AD_UserRole" Type="CommonModel.Store.AD_UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AD_User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="AD_UserRole">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EntityMetaData_EntitySet">
+    <End Role="EntitySet" Type="CommonModel.Store.EntitySet" Multiplicity="0..1" />
+    <End Role="EntityMetaData" Type="CommonModel.Store.EntityMetaData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntitySet">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EntityMetaData">
+        <PropertyRef Name="EntitySet_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

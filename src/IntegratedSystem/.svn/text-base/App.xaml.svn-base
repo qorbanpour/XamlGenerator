@@ -1,0 +1,24 @@
+﻿<Application   
+  x:Class="IntegratedSystem.App"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:converters="clr-namespace:IntegratedSystem"
+    xmlns:controls="clr-namespace:Silverlight.Controls;assembly=Silverlight.Controls"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <converters:SecurityConverter x:Key="SecurityConverter" />
+            <converters:ImageSourceConverter x:Key="ConvertImage"  ></converters:ImageSourceConverter>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Assets/Styles.xaml"/>
+                <ResourceDictionary Source="Resources/TemplateStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        <controls:PersianCalendarInfo  x:Key="PersianCalendarInfo"/>
+
+    </Application.Resources>
+
+
+
+</Application>

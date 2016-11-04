@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls
+END
+GlobalSuppressions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalSuppressions.cs
+END
+InteractionHelper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/InteractionHelper.cs
+END
+IUpdateVisualState.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/IUpdateVisualState.cs
+END
+VisualStates.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/VisualStates.cs
+END
+Silverlight.Controls.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/Silverlight.Controls.csproj
+END

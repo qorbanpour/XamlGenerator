@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CommonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CommonModelStoreContainer">
+          <EntitySet Name="AD_Client" EntityType="CommonModel.Store.AD_Client" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AD_Form" EntityType="CommonModel.Store.AD_Form" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AD_FormDetail" EntityType="CommonModel.Store.AD_FormDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AD_Organization" EntityType="CommonModel.Store.AD_Organization" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AD_Role" EntityType="CommonModel.Store.AD_Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AD_RoleAccess" EntityType="CommonModel.Store.AD_RoleAccess" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AD_Subsystem" EntityType="CommonModel.Store.AD_Subsystem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AD_User" EntityType="CommonModel.Store.AD_User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AD_UserRole" EntityType="CommonModel.Store.AD_UserRole" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EntityMetaData" EntityType="CommonModel.Store.EntityMetaData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EntitySet" EntityType="CommonModel.Store.EntitySet" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AD_FormDetail_AD_Form" Association="CommonModel.Store.FK_AD_FormDetail_AD_Form">
+            <End Role="AD_Form" EntitySet="AD_Form" />
+            <End Role="AD_FormDetail" EntitySet="AD_FormDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AD_Organization_AD_Client" Association="CommonModel.Store.FK_AD_Organization_AD_Client">
+            <End Role="AD_Client" EntitySet="AD_Client" />
+            <End Role="AD_Organization" EntitySet="AD_Organization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AD_RoleAccess_AD_Role" Association="CommonModel.Store.FK_AD_RoleAccess_AD_Role">
+            <End Role="AD_Role" EntitySet="AD_Role" />
+            <End Role="AD_RoleAccess" EntitySet="AD_RoleAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AD_UserRole_AD_User" Association="CommonModel.Store.FK_AD_UserRole_AD_User">
+            <End Role="AD_User" EntitySet="AD_User" />
+            <End Role="AD_UserRole" EntitySet="AD_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntityMetaData_EntitySet" Association="CommonModel.Store.FK_EntityMetaData_EntitySet">
+            <End Role="EntitySet" EntitySet="EntitySet" />
+            <End Role="EntityMetaData" EntitySet="EntityMetaData" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AD_Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Updated" Type="datetime" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_Form">
+          <Key>
+            <PropertyRef Name="FormID" />
+          </Key>
+          <Property Name="FormID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FormName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Translation" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="SubsystemID" Type="int" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Updated" Type="datetime" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_FormDetail">
+          <Key>
+            <PropertyRef Name="FormDetailID" />
+          </Key>
+          <Property Name="FormDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FormID" Type="int" Nullable="false" />
+          <Property Name="EntitySetID" Type="int" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Updated" Type="datetime" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_Organization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="Client" Type="int" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Updated" Type="datetime" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Updated" Type="datetime" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_RoleAccess">
+          <Key>
+            <PropertyRef Name="RoleAccessID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="RoleAccessID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AccessElement" Type="int" Nullable="false" />
+          <Property Name="IsAccessible" Type="bit" />
+          <Property Name="IfReadOnly" Type="bit" />
+          <Property Name="IsDeletable" Type="bit" />
+          <Property Name="IsNewable" Type="bit" />
+          <Property Name="ElementID" Type="int" Nullable="false" />
+          <Property Name="ElementName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ElementPathName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Info" Type="nvarchar" MaxLength="500" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Updated" Type="datetime" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_Subsystem">
+          <Key>
+            <PropertyRef Name="SubsystemID" />
+          </Key>
+          <Property Name="SubsystemID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Updated" Type="datetime" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="2000" />
+          <Property Name="RepeatPassword" Type="nvarchar" Nullable="false" MaxLength="2000" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="int" />
+          <Property Name="CellNumber" Type="int" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Updated" Type="datetime" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Updated" Type="datetime" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntityMetaData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Nullable" Type="bit" />
+          <Property Name="TypeUsageName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DefaultValue" Type="nvarchar" MaxLength="300" />
+          <Property Name="Documentation" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsKey" Type="bit" />
+          <Property Name="IsForeignKey" Type="bit" />
+          <Property Name="ForeignEntityType" Type="nvarchar" MaxLength="200" />
+          <Property Name="ForeingEntitySet" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsCollectionEntity" Type="bit" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EntitySet_id" Type="int" />
+          <Property Name="IsFieldReadOnly" Type="bit" />
+          <Property Name="IsChildDetailGrid" Type="bit" />
+          <Property Name="Translation" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsList" Type="bit" />
+          <Property Name="ListTableName" Type="nvarchar" MaxLength="100" />
+          <Property Name="TabSequence" Type="int" />
+          <Property Name="FieldOrder" Type="int" />
+          <Property Name="FieldGroup" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tooltip" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsInVisible" Type="bit" />
+          <Property Name="EditorClasspath" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsVirtual" Type="bit" />
+          <Property Name="IsButton" Type="bit" />
+          <Property Name="DisplayMemberName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ItemsId" Type="int" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Updated" Type="datetime" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntitySet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="EntitySetName" Type="varchar" MaxLength="200" />
+          <Property Name="EntityTypeName" Type="nvarchar" MaxLength="200" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Updated" Type="datetime" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AD_FormDetail_AD_Form">
+          <End Role="AD_Form" Type="CommonModel.Store.AD_Form" Multiplicity="1" />
+          <End Role="AD_FormDetail" Type="CommonModel.Store.AD_FormDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AD_Form">
+              <PropertyRef Name="FormID" />
+            </Principal>
+            <Dependent Role="AD_FormDetail">
+              <PropertyRef Name="FormID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AD_Organization_AD_Client">
+          <End Role="AD_Client" Type="CommonModel.Store.AD_Client" Multiplicity="1" />
+          <End Role="AD_Organization" Type="CommonModel.Store.AD_Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AD_Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AD_Organization">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AD_RoleAccess_AD_Role">
+          <End Role="AD_Role" Type="CommonModel.Store.AD_Role" Multiplicity="1" />
+          <End Role="AD_RoleAccess" Type="CommonModel.Store.AD_RoleAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AD_Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="AD_RoleAccess">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AD_UserRole_AD_User">
+          <End Role="AD_User" Type="CommonModel.Store.AD_User" Multiplicity="1" />
+          <End Role="AD_UserRole" Type="CommonModel.Store.AD_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AD_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AD_UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntityMetaData_EntitySet">
+          <End Role="EntitySet" Type="CommonModel.Store.EntitySet" Multiplicity="0..1" />
+          <End Role="EntityMetaData" Type="CommonModel.Store.EntityMetaData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntitySet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EntityMetaData">
+              <PropertyRef Name="EntitySet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CommonModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CommonEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AD_Client" EntityType="CommonModel.AD_Client" />
+          <EntitySet Name="AD_Form" EntityType="CommonModel.AD_Form" />
+          <EntitySet Name="AD_FormDetail" EntityType="CommonModel.AD_FormDetail" />
+          <EntitySet Name="AD_Organization" EntityType="CommonModel.AD_Organization" />
+          <EntitySet Name="AD_Role" EntityType="CommonModel.AD_Role" />
+          <EntitySet Name="AD_RoleAccess" EntityType="CommonModel.AD_RoleAccess" />
+          <EntitySet Name="AD_Subsystem" EntityType="CommonModel.AD_Subsystem" />
+          <EntitySet Name="AD_User" EntityType="CommonModel.AD_User" />
+          <EntitySet Name="AD_UserRole" EntityType="CommonModel.AD_UserRole" />
+          <EntitySet Name="EntityMetaData" EntityType="CommonModel.EntityMetaData" />
+          <EntitySet Name="EntitySet" EntityType="CommonModel.EntitySet" />
+          <AssociationSet Name="FK_AD_Organization_AD_Client" Association="CommonModel.FK_AD_Organization_AD_Client">
+            <End Role="AD_Client" EntitySet="AD_Client" />
+            <End Role="AD_Organization" EntitySet="AD_Organization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AD_FormDetail_AD_Form" Association="CommonModel.FK_AD_FormDetail_AD_Form">
+            <End Role="AD_Form" EntitySet="AD_Form" />
+            <End Role="AD_FormDetail" EntitySet="AD_FormDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AD_RoleAccess_AD_Role" Association="CommonModel.FK_AD_RoleAccess_AD_Role">
+            <End Role="AD_Role" EntitySet="AD_Role" />
+            <End Role="AD_RoleAccess" EntitySet="AD_RoleAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AD_UserRole_AD_User" Association="CommonModel.FK_AD_UserRole_AD_User">
+            <End Role="AD_User" EntitySet="AD_User" />
+            <End Role="AD_UserRole" EntitySet="AD_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntityMetaData_EntitySet" Association="CommonModel.FK_EntityMetaData_EntitySet">
+            <End Role="EntitySet" EntitySet="EntitySet" />
+            <End Role="EntityMetaData" EntitySet="EntityMetaData" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AD_Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AD_Organization" Relationship="CommonModel.FK_AD_Organization_AD_Client" FromRole="AD_Client" ToRole="AD_Organization" />
+        </EntityType>
+        <EntityType Name="AD_Form">
+          <Key>
+            <PropertyRef Name="FormID" />
+          </Key>
+          <Property Name="FormID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Translation" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="SubsystemID" Type="Int32" Nullable="false" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AD_FormDetail" Relationship="CommonModel.FK_AD_FormDetail_AD_Form" FromRole="AD_Form" ToRole="AD_FormDetail" />
+        </EntityType>
+        <EntityType Name="AD_FormDetail">
+          <Key>
+            <PropertyRef Name="FormDetailID" />
+          </Key>
+          <Property Name="FormDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormID" Type="Int32" Nullable="false" />
+          <Property Name="EntitySetID" Type="Int32" Nullable="false" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AD_Form" Relationship="CommonModel.FK_AD_FormDetail_AD_Form" FromRole="AD_FormDetail" ToRole="AD_Form" />
+        </EntityType>
+        <EntityType Name="AD_Organization">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Client" Type="Int32" Nullable="false" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AD_Client" Relationship="CommonModel.FK_AD_Organization_AD_Client" FromRole="AD_Organization" ToRole="AD_Client" />
+        </EntityType>
+        <EntityType Name="AD_Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AD_RoleAccess" Relationship="CommonModel.FK_AD_RoleAccess_AD_Role" FromRole="AD_Role" ToRole="AD_RoleAccess" />
+        </EntityType>
+        <EntityType Name="AD_RoleAccess">
+          <Key>
+            <PropertyRef Name="RoleAccessID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="RoleAccessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccessElement" Type="Int32" Nullable="false" />
+          <Property Name="IsAccessible" Type="Boolean" />
+          <Property Name="IfReadOnly" Type="Boolean" />
+          <Property Name="IsDeletable" Type="Boolean" />
+          <Property Name="IsNewable" Type="Boolean" />
+          <Property Name="ElementID" Type="Int32" Nullable="false" />
+          <Property Name="ElementName" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="ElementPathName" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Info" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AD_Role" Relationship="CommonModel.FK_AD_RoleAccess_AD_Role" FromRole="AD_RoleAccess" ToRole="AD_Role" />
+        </EntityType>
+        <EntityType Name="AD_Subsystem">
+          <Key>
+            <PropertyRef Name="SubsystemID" />
+          </Key>
+          <Property Name="SubsystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="RepeatPassword" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="Int32" />
+          <Property Name="CellNumber" Type="Int32" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AD_UserRole" Relationship="CommonModel.FK_AD_UserRole_AD_User" FromRole="AD_User" ToRole="AD_UserRole" />
+        </EntityType>
+        <EntityType Name="AD_UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AD_User" Relationship="CommonModel.FK_AD_UserRole_AD_User" FromRole="AD_UserRole" ToRole="AD_User" />
+        </EntityType>
+        <EntityType Name="EntityMetaData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="PropertyName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Nullable" Type="Boolean" />
+          <Property Name="TypeUsageName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="DefaultValue" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Documentation" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="IsKey" Type="Boolean" />
+          <Property Name="IsForeignKey" Type="Boolean" />
+          <Property Name="ForeignEntityType" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="ForeingEntitySet" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="IsCollectionEntity" Type="Boolean" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntitySet_id" Type="Int32" />
+          <Property Name="IsFieldReadOnly" Type="Boolean" />
+          <Property Name="IsChildDetailGrid" Type="Boolean" />
+          <Property Name="Translation" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="IsList" Type="Boolean" />
+          <Property Name="ListTableName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="TabSequence" Type="Int32" />
+          <Property Name="FieldOrder" Type="Int32" />
+          <Property Name="FieldGroup" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Tooltip" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="IsInVisible" Type="Boolean" />
+          <Property Name="EditorClasspath" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="IsVirtual" Type="Boolean" />
+          <Property Name="IsButton" Type="Boolean" />
+          <Property Name="DisplayMemberName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ItemsId" Type="Int32" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EntitySet" Relationship="CommonModel.FK_EntityMetaData_EntitySet" FromRole="EntityMetaData" ToRole="EntitySet" />
+        </EntityType>
+        <EntityType Name="EntitySet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="EntitySetName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="EntityTypeName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Updated" Type="DateTime" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EntityMetaData" Relationship="CommonModel.FK_EntityMetaData_EntitySet" FromRole="EntitySet" ToRole="EntityMetaData" />
+        </EntityType>
+        <Association Name="FK_AD_Organization_AD_Client">
+          <End Role="AD_Client" Type="CommonModel.AD_Client" Multiplicity="1" />
+          <End Role="AD_Organization" Type="CommonModel.AD_Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AD_Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AD_Organization">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AD_FormDetail_AD_Form">
+          <End Role="AD_Form" Type="CommonModel.AD_Form" Multiplicity="1" />
+          <End Role="AD_FormDetail" Type="CommonModel.AD_FormDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AD_Form">
+              <PropertyRef Name="FormID" />
+            </Principal>
+            <Dependent Role="AD_FormDetail">
+              <PropertyRef Name="FormID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AD_RoleAccess_AD_Role">
+          <End Role="AD_Role" Type="CommonModel.AD_Role" Multiplicity="1" />
+          <End Role="AD_RoleAccess" Type="CommonModel.AD_RoleAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AD_Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="AD_RoleAccess">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AD_UserRole_AD_User">
+          <End Role="AD_User" Type="CommonModel.AD_User" Multiplicity="1" />
+          <End Role="AD_UserRole" Type="CommonModel.AD_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AD_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AD_UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntityMetaData_EntitySet">
+          <End Role="EntitySet" Type="CommonModel.EntitySet" Multiplicity="0..1" />
+          <End Role="EntityMetaData" Type="CommonModel.EntityMetaData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntitySet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EntityMetaData">
+              <PropertyRef Name="EntitySet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CommonModelStoreContainer" CdmEntityContainer="CommonEntities">
+          <EntitySetMapping Name="AD_Client"><EntityTypeMapping TypeName="CommonModel.AD_Client"><MappingFragment StoreEntitySet="AD_Client">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+            <ScalarProperty Name="Updated" ColumnName="Updated" />
+            <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AD_Form"><EntityTypeMapping TypeName="CommonModel.AD_Form"><MappingFragment StoreEntitySet="AD_Form">
+            <ScalarProperty Name="FormID" ColumnName="FormID" />
+            <ScalarProperty Name="FormName" ColumnName="FormName" />
+            <ScalarProperty Name="Translation" ColumnName="Translation" />
+            <ScalarProperty Name="SubsystemID" ColumnName="SubsystemID" />
+            <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+            <ScalarProperty Name="Updated" ColumnName="Updated" />
+            <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AD_FormDetail"><EntityTypeMapping TypeName="CommonModel.AD_FormDetail"><MappingFragment StoreEntitySet="AD_FormDetail">
+            <ScalarProperty Name="FormDetailID" ColumnName="FormDetailID" />
+            <ScalarProperty Name="FormID" ColumnName="FormID" />
+            <ScalarProperty Name="EntitySetID" ColumnName="EntitySetID" />
+            <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+            <ScalarProperty Name="Updated" ColumnName="Updated" />
+            <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AD_Organization"><EntityTypeMapping TypeName="CommonModel.AD_Organization"><MappingFragment StoreEntitySet="AD_Organization">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="Client" ColumnName="Client" />
+            <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+            <ScalarProperty Name="Updated" ColumnName="Updated" />
+            <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AD_Role"><EntityTypeMapping TypeName="CommonModel.AD_Role"><MappingFragment StoreEntitySet="AD_Role">
+            <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+            <ScalarProperty Name="Updated" ColumnName="Updated" />
+            <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AD_RoleAccess"><EntityTypeMapping TypeName="CommonModel.AD_RoleAccess"><MappingFragment StoreEntitySet="AD_RoleAccess">
+            <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            <ScalarProperty Name="RoleAccessID" ColumnName="RoleAccessID" />
+            <ScalarProperty Name="AccessElement" ColumnName="AccessElement" />
+            <ScalarProperty Name="IsAccessible" ColumnName="IsAccessible" />
+            <ScalarProperty Name="IfReadOnly" ColumnName="IfReadOnly" />
+            <ScalarProperty Name="IsDeletable" ColumnName="IsDeletable" />
+            <ScalarProperty Name="IsNewable" ColumnName="IsNewable" />
+            <ScalarProperty Name="ElementID" ColumnName="ElementID" />
+            <ScalarProperty Name="ElementName" ColumnName="ElementName" />
+            <ScalarProperty Name="ElementPathName" ColumnName="ElementPathName" />
+            <ScalarProperty Name="Info" ColumnName="Info" />
+            <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+            <ScalarProperty Name="Updated" ColumnName="Updated" />
+            <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AD_Subsystem"><EntityTypeMapping TypeName="CommonModel.AD_Subsystem"><MappingFragment StoreEntitySet="AD_Subsystem">
+            <ScalarProperty Name="SubsystemID" ColumnName="SubsystemID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+            <ScalarProperty Name="Updated" ColumnName="Updated" />
+            <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AD_User"><EntityTypeMapping TypeName="CommonModel.AD_User"><MappingFragment StoreEntitySet="AD_User">
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="RepeatPassword" ColumnName="RepeatPassword" />
+            <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+            <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+            <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+            <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+            <ScalarProperty Name="Updated" ColumnName="Updated" />
+            <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AD_UserRole"><EntityTypeMapping TypeName="CommonModel.AD_UserRole"><MappingFragment StoreEntitySet="AD_UserRole">
+            <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+            <ScalarProperty Name="Updated" ColumnName="Updated" />
+            <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EntityMetaData"><EntityTypeMapping TypeName="CommonModel.EntityMetaData"><MappingFragment StoreEntitySet="EntityMetaData">
+            <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+            <ScalarProperty Name="Nullable" ColumnName="Nullable" />
+            <ScalarProperty Name="TypeUsageName" ColumnName="TypeUsageName" />
+            <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+            <ScalarProperty Name="Documentation" ColumnName="Documentation" />
+            <ScalarProperty Name="IsKey" ColumnName="IsKey" />
+            <ScalarProperty Name="IsForeignKey" ColumnName="IsForeignKey" />
+            <ScalarProperty Name="ForeignEntityType" ColumnName="ForeignEntityType" />
+            <ScalarProperty Name="ForeingEntitySet" ColumnName="ForeingEntitySet" />
+            <ScalarProperty Name="IsCollectionEntity" ColumnName="IsCollectionEntity" />
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="EntitySet_id" ColumnName="EntitySet_id" />
+            <ScalarProperty Name="IsFieldReadOnly" ColumnName="IsFieldReadOnly" />
+            <ScalarProperty Name="IsChildDetailGrid" ColumnName="IsChildDetailGrid" />
+            <ScalarProperty Name="Translation" ColumnName="Translation" />
+            <ScalarProperty Name="IsList" ColumnName="IsList" />
+            <ScalarProperty Name="ListTableName" ColumnName="ListTableName" />
+            <ScalarProperty Name="TabSequence" ColumnName="TabSequence" />
+            <ScalarProperty Name="FieldOrder" ColumnName="FieldOrder" />
+            <ScalarProperty Name="FieldGroup" ColumnName="FieldGroup" />
+            <ScalarProperty Name="Tooltip" ColumnName="Tooltip" />
+            <ScalarProperty Name="IsInVisible" ColumnName="IsInVisible" />
+            <ScalarProperty Name="EditorClasspath" ColumnName="EditorClasspath" />
+            <ScalarProperty Name="IsVirtual" ColumnName="IsVirtual" />
+            <ScalarProperty Name="IsButton" ColumnName="IsButton" />
+            <ScalarProperty Name="DisplayMemberName" ColumnName="DisplayMemberName" />
+            <ScalarProperty Name="ItemsId" ColumnName="ItemsId" />
+            <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+            <ScalarProperty Name="Updated" ColumnName="Updated" />
+            <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EntitySet"><EntityTypeMapping TypeName="CommonModel.EntitySet"><MappingFragment StoreEntitySet="EntitySet">
+            <ScalarProperty Name="EntitySetName" ColumnName="EntitySetName" />
+            <ScalarProperty Name="EntityTypeName" ColumnName="EntityTypeName" />
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            <ScalarProperty Name="Created" ColumnName="Created" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+            <ScalarProperty Name="Updated" ColumnName="Updated" />
+            <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="GeneratorModel" ZoomLevel="79">
+        <EntityTypeShape EntityType="CommonModel.AD_Client" Width="1.5" PointX="10.75" PointY="1.125" Height="3.1340950520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommonModel.AD_Form" Width="1.5" PointX="0.75" PointY="11" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommonModel.AD_FormDetail" Width="1.5" PointX="3" PointY="11.125" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommonModel.AD_Organization" Width="1.5" PointX="13" PointY="1" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommonModel.AD_Role" Width="1.5" PointX="5.75" PointY="6.875" Height="2.9417936197916665" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommonModel.AD_RoleAccess" Width="1.5" PointX="8" PointY="6" Height="4.6725065104166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommonModel.AD_Subsystem" Width="1.5" PointX="10.75" PointY="5.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommonModel.AD_User" Width="1.5" PointX="5.75" PointY="1" Height="3.9033007812499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommonModel.AD_UserRole" Width="1.5" PointX="8" PointY="1.375" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommonModel.EntityMetaData" Width="1.5" PointX="3" PointY="1.25" Height="7.7493294270833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommonModel.EntitySet" Width="1.5" PointX="0.75" PointY="3.5" Height="3.1340950520833317" IsExpanded="true" />
+        <AssociationConnector Association="CommonModel.FK_AD_Organization_AD_Client" ManuallyRouted="false">
+          <ConnectorPoint PointX="12.25" PointY="2.6920475260416667" />
+          <ConnectorPoint PointX="13" PointY="2.6920475260416667" />
+        </AssociationConnector>
+        <AssociationConnector Association="CommonModel.FK_AD_FormDetail_AD_Form" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="12.692047526041666" />
+          <ConnectorPoint PointX="3" PointY="12.692047526041666" />
+        </AssociationConnector>
+        <AssociationConnector Association="CommonModel.FK_AD_RoleAccess_AD_Role" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="8.3458968098958337" />
+          <ConnectorPoint PointX="8" PointY="8.3458968098958337" />
+        </AssociationConnector>
+        <AssociationConnector Association="CommonModel.FK_AD_UserRole_AD_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="2.9420475260416659" />
+          <ConnectorPoint PointX="8" PointY="2.9420475260416659" />
+        </AssociationConnector>
+        <AssociationConnector Association="CommonModel.FK_EntityMetaData_EntitySet" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.0670475260416659" />
+          <ConnectorPoint PointX="3" PointY="5.0670475260416659" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

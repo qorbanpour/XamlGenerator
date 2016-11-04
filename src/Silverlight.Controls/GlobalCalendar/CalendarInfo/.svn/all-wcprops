@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/CalendarInfo
+END
+GregorianCalendarInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/CalendarInfo/GregorianCalendarInfo.cs
+END
+CalendarInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/CalendarInfo/CalendarInfo.cs
+END
+PersianCalendarInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/CalendarInfo/PersianCalendarInfo.cs
+END
+CultureCalendarInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/CalendarInfo/CultureCalendarInfo.cs
+END

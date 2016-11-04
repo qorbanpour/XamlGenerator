@@ -1,0 +1,149 @@
+﻿<navigation:Page x:Class="IntegratedSystem.Acct_Ac_tblProjectSimpleForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+     xmlns:e="clr-namespace:IntegratedSystem.Web"  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    FontFamily="Tahoma"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+        <Grid FlowDirection="RightToLeft" x:Name="LayoutRoot">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="600*" />
+			<ColumnDefinition Width="300*"/>
+		</Grid.ColumnDefinitions>
+		<Grid FlowDirection="RightToLeft" Grid.Column="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+               <RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+            <!-- 
+                Here is the place for GridView View and Buttons
+            -->
+            <Border Grid.Row="0" Style="{StaticResource TopGridViewBorder}" >
+                <Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="NewRecordButton"  Content="رکورد جدید" Height="33" Width="60" Click="NewRecordButton_Click" />
+                        <Button Name="SaveButton" Content="ذخیره" Height="33" Width="60" Click="SaveButton_Click" />
+                        <Button Name="DeleteButton"  Content="حذف"  Height="33" Width="60" Click="DeleteButton_Click" />
+                        <Button Name="CancelButton" Content="کنسل" Height="33" Width="60" Click="CancelButton_Click" />                       
+                    </StackPanel>
+                </Grid>
+            </Border>
+           
+           <Border Grid.Row="1" Style="{StaticResource MiddleGridViewBorder}">
+                <Grid> <telerik:RadDomainDataSource x:Name="GetAcct_Ac_tblProjectQueryDataSource"
+AutoLoad="True"
+QueryName="GetAcct_Ac_tblProjectQuery" >
+<telerik:RadDomainDataSource.DomainContext>
+<e:IntegratedSystemDomainContext /></telerik:RadDomainDataSource.DomainContext>
+</telerik:RadDomainDataSource>
+<telerik:RadGridView AutoGenerateColumns="False" IsReadOnly="{Binding IsFormReadOnly}"  HorizontalAlignment="Stretch" Name="Acct_Ac_tblProjectRadGrid" ItemsSource="{Binding DataView, ElementName=GetAcct_Ac_tblProjectQueryDataSource}" IsBusy="{Binding IsBusy, ElementName=GetAcct_Ac_tblProjectQueryDataSource}" VerticalAlignment="Stretch" >
+<telerik:RadGridView.Columns>
+ <telerik:GridViewDataColumn Header="شماره پروژه"  DataMemberBinding="{Binding ShomarehProject, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_ShomarehProject}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_ShomarehProject}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding ShomarehProject }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding ShomarehProject, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+ <telerik:GridViewDataColumn Header="شرح پروژه"  DataMemberBinding="{Binding Sharh, Mode=TwoWay}"  IsVisible="{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Sharh}"
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Sharh}"
+ TextAlignment="Right">
+ <telerik:GridViewDataColumn.CellTemplate>
+<DataTemplate>
+<TextBlock Text="{Binding Sharh }" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellTemplate>
+<telerik:GridViewDataColumn.CellEditTemplate>
+<DataTemplate>
+<TextBox Text="{Binding Sharh, Mode=TwoWay}" />
+</DataTemplate>
+</telerik:GridViewDataColumn.CellEditTemplate>
+</telerik:GridViewDataColumn>
+</telerik:RadGridView.Columns>
+</telerik:RadGridView>
+
+</Grid>
+           </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource BottomGridViewBorder}">
+                <Grid></Grid>
+            </Border>
+		</Grid>
+		<Grid Grid.Column="1" FlowDirection="RightToLeft">			
+			<Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+            <!-- 
+                Here is the place for DataForm                     
+            -->
+
+            <Border Grid.Row="0" Style="{StaticResource TopDataFormBorder}" >
+                <Grid></Grid>
+            </Border>
+       
+            <Border Grid.Row="1" Style="{StaticResource MiddleDataFormBorder}">
+                <Grid><Grid>
+<Grid.Resources>
+<DataTemplate x:Key="Acct_Ac_tblProjectRadDataFormTemplate">
+<Grid>
+<Grid.ColumnDefinitions>
+<ColumnDefinition/>
+<ColumnDefinition/>
+</Grid.ColumnDefinitions>
+<Grid.RowDefinitions>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+
+</Grid.RowDefinitions>
+<TextBlock Margin="10,5,5,5" Text="شماره پروژه"  Grid.Row="0" Grid.Column="0" Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_ShomarehProject}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding ShomarehProject , Mode=TwoWay}" Grid.Row="0" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_ShomarehProject}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_ShomarehProject}"
+ />
+<TextBlock Margin="10,5,5,5" Text="شرح پروژه"  Grid.Row="1" Grid.Column="0" Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Sharh}" 
+ />
+<TextBox Margin="10,5,5,5" Text="{Binding Sharh , Mode=TwoWay}" Grid.Row="1" Grid.Column="1"  Visibility="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Sharh}" 
+ IsReadOnly="{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Sharh}"
+ />
+
+</Grid>
+</DataTemplate>
+</Grid.Resources>
+<telerik:RadDataForm EditEnded="Acct_Ac_tblProjectRadDataForm_EditEnded" FlowDirection="RightToLeft" x:Name="Acct_Ac_tblProjectRadDataForm"
+AutoGenerateFields="False"
+ReadOnlyTemplate="{StaticResource Acct_Ac_tblProjectRadDataFormTemplate}"
+EditTemplate="{StaticResource Acct_Ac_tblProjectRadDataFormTemplate}"
+NewItemTemplate="{StaticResource Acct_Ac_tblProjectRadDataFormTemplate}"
+ItemsSource="{Binding DataView, ElementName=GetAcct_Ac_tblProjectQueryDataSource}">
+</telerik:RadDataForm>
+</Grid>
+
+</Grid>
+            </Border>
+    
+            <Border Grid.Row="2" Style="{StaticResource BottomDataFormBorder}">
+                <Grid></Grid>
+            </Border>        </Grid>
+        </Grid>
+ 
+</navigation:Page>

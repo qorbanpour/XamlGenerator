@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/IntegratedSystem/!svn/ver/95/IntegratedSystem.Web
+END
+IntegratedSystemModel.Designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/IntegratedSystem/!svn/ver/95/IntegratedSystem.Web/IntegratedSystemModel.Designer.cs
+END
+Web.Release.config
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/IntegratedSystem/!svn/ver/3/IntegratedSystem.Web/Web.Release.config
+END
+Web.config
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/IntegratedSystem/!svn/ver/95/IntegratedSystem.Web/Web.config
+END
+IntegratedSystemTestPage.aspx
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/IntegratedSystem/!svn/ver/3/IntegratedSystem.Web/IntegratedSystemTestPage.aspx
+END
+IntegratedSystem.Web.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/IntegratedSystem/!svn/ver/95/IntegratedSystem.Web/IntegratedSystem.Web.csproj
+END
+Web.Debug.config
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/IntegratedSystem/!svn/ver/3/IntegratedSystem.Web/Web.Debug.config
+END
+IntegratedSystemDomainService.metadata.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/IntegratedSystem/!svn/ver/95/IntegratedSystem.Web/IntegratedSystemDomainService.metadata.cs
+END
+Silverlight.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/IntegratedSystem/!svn/ver/3/IntegratedSystem.Web/Silverlight.js
+END
+IntegratedSystemDomainService.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IntegratedSystem/!svn/ver/95/IntegratedSystem.Web/IntegratedSystemDomainService.cs
+END
+IntegratedSystemModel.edmx
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/IntegratedSystem/!svn/ver/95/IntegratedSystem.Web/IntegratedSystemModel.edmx
+END
+Class2.cs
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/IntegratedSystem/!svn/ver/95/IntegratedSystem.Web/Class2.cs
+END
+IntegratedSystemTestPage.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/IntegratedSystem/!svn/ver/3/IntegratedSystem.Web/IntegratedSystemTestPage.html
+END
+MetaDataGenerator.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/IntegratedSystem/!svn/ver/95/IntegratedSystem.Web/MetaDataGenerator.cs
+END

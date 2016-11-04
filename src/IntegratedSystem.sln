@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegratedSystem", "IntegratedSystem\IntegratedSystem.csproj", "{E50617FD-77F6-4F97-9C80-1237BB8DA9AB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D3257732-EB91-431D-9039-4EB47223C5E3} = {D3257732-EB91-431D-9039-4EB47223C5E3}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegratedSystem.Web", "IntegratedSystem.Web\IntegratedSystem.Web.csproj", "{D3257732-EB91-431D-9039-4EB47223C5E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silverlight.Controls", "Silverlight.Controls\Silverlight.Controls.csproj", "{45BEA1D7-B3E6-40CC-8AA3-D12E34D5E909}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E50617FD-77F6-4F97-9C80-1237BB8DA9AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E50617FD-77F6-4F97-9C80-1237BB8DA9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E50617FD-77F6-4F97-9C80-1237BB8DA9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E50617FD-77F6-4F97-9C80-1237BB8DA9AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3257732-EB91-431D-9039-4EB47223C5E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3257732-EB91-431D-9039-4EB47223C5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3257732-EB91-431D-9039-4EB47223C5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3257732-EB91-431D-9039-4EB47223C5E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45BEA1D7-B3E6-40CC-8AA3-D12E34D5E909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45BEA1D7-B3E6-40CC-8AA3-D12E34D5E909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45BEA1D7-B3E6-40CC-8AA3-D12E34D5E909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45BEA1D7-B3E6-40CC-8AA3-D12E34D5E909}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

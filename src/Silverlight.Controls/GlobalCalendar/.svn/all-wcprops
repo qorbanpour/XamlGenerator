@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar
+END
+GlobalCalendarBlackoutDatesCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/GlobalCalendarBlackoutDatesCollection.cs
+END
+GlobalCalendarDayButton.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/GlobalCalendarDayButton.xaml
+END
+GlobalCalendarDateChangedEventArgs.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/GlobalCalendarDateChangedEventArgs.cs
+END
+GlobalCalendarButton.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/GlobalCalendarButton.xaml
+END
+GlobalCalendarDayButton.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/GlobalCalendarDayButton.cs
+END
+CalendarDayButtonStyleSelector.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/CalendarDayButtonStyleSelector.cs
+END
+GlobalCalendarItem.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/GlobalCalendarItem.xaml
+END
+GlobalCalendar.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/GlobalCalendar.xaml
+END
+GlobalCalendarButton.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/GlobalCalendarButton.cs
+END
+GlobalSelectedDatesCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/GlobalSelectedDatesCollection.cs
+END
+CalendarExtensions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/CalendarExtensions.cs
+END
+GlobalCalendarItem.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/GlobalCalendarItem.cs
+END
+GlobalCalendar.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/IntegratedSystem/!svn/ver/90/Silverlight.Controls/GlobalCalendar/GlobalCalendar.cs
+END

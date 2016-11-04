@@ -1,0 +1,216 @@
+﻿<navigation:Page x:Class="IntegratedSystem.Acct_Ac_tblHesabMoeenMMD2" 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:e="clr-namespace:IntegratedSystem.Web"  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           d:DesignWidth="640" d:DesignHeight="480"
+           Title="Acct_Ac_tblHesabMoeenMMD2 Page">
+    <Grid x:Name='LayoutRoot' FlowDirection='RightToLeft' >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width='436*' />
+            <ColumnDefinition  Width='204*'/>
+        </Grid.ColumnDefinitions>
+        <Border Margin="0,0,33,12" Grid.Column='0' >
+            <Grid>
+                <telerik:RadDomainDataSource x:Name='GetAcct_Ac_tblHesabMoeenByAcct_Ac_tblHesabKolQueryDataSource'
+AutoLoad='True'
+QueryName='GetAcct_Ac_tblHesabMoeenByAcct_Ac_tblHesabKolQuery' >
+                    <telerik:RadDomainDataSource.DomainContext>
+                        <e:IntegratedSystemDomainContext />
+                    </telerik:RadDomainDataSource.DomainContext>
+                    <telerik:RadDomainDataSource.QueryParameters>
+                        <telerik:QueryParameter ParameterName="Acct_Ac_tblHesabKolID" Value="{Binding HesabKolID}" ></telerik:QueryParameter>
+                    </telerik:RadDomainDataSource.QueryParameters>
+                </telerik:RadDomainDataSource>
+                <telerik:RadDomainDataSource x:Name='GetAD_GeneralItemsQueryDataSource'
+AutoLoad='True'
+QueryName='GetAD_GeneralItemsQuery' >
+                    <telerik:RadDomainDataSource.DomainContext>
+                        <e:IntegratedSystemDomainContext />
+                    </telerik:RadDomainDataSource.DomainContext>
+                    <telerik:RadDomainDataSource.QueryParameters>
+                        <telerik:QueryParameter  ParameterName="ItemsId" Value="1"></telerik:QueryParameter>
+                    </telerik:RadDomainDataSource.QueryParameters>
+                </telerik:RadDomainDataSource>
+
+
+
+                <telerik:RadGridView AutoGenerateColumns='False' IsReadOnly='{Binding IsFormReadOnly}' HorizontalAlignment='Stretch' Name='Acct_Ac_tblHesabMoeenRadGrid' ItemsSource='{Binding DataView, ElementName=GetAcct_Ac_tblHesabMoeenByAcct_Ac_tblHesabKolQueryDataSource}' IsBusy='{Binding IsBusy, ElementName=GetAcct_Ac_tblHesabMoeenByAcct_Ac_tblHesabKolQueryDataSource}' VerticalAlignment='Stretch' Margin="6,65,6,6" FontFamily="Tahoma" Opacity="0.9">
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn Header='کد معین' DataMemberBinding='{Binding CodeMoeen, Mode=TwoWay}'  IsVisible='{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_CodeMoeen}'
+ IsReadOnly='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_CodeMoeen}'
+ TextAlignment='Right'>
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text='{Binding CodeMoeen }' />
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                            <telerik:GridViewDataColumn.CellEditTemplate>
+                                <DataTemplate>
+                                    <TextBox Text='{Binding CodeMoeen, Mode=TwoWay}' />
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellEditTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header='شرح  کد معین' DataMemberBinding='{Binding NameMoeen, Mode=TwoWay}'  IsVisible='{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_NameMoeen}'
+ IsReadOnly='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_NameMoeen}'
+ TextAlignment='Right'>
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text='{Binding NameMoeen }' />
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                            <telerik:GridViewDataColumn.CellEditTemplate>
+                                <DataTemplate>
+                                    <TextBox Text='{Binding NameMoeen, Mode=TwoWay}' />
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellEditTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewComboBoxColumn Header='نوع' 
+   IsVisible='{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Noe}'
+ IsReadOnly='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Noe}'
+  DataMemberBinding='{Binding Noe , Mode=TwoWay}'
+UniqueName='نوع'
+ItemsSource='{Binding DataView, ElementName=GetAD_GeneralItemsQueryDataSource}'
+SelectedValueMemberPath='ItemKey'
+DisplayMemberPath='ItemValue' />
+                        <telerik:GridViewCheckBoxColumn Header='فعال'
+  IsVisible='{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_IsActive}'
+ IsReadOnly='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsActive}'
+  DataMemberBinding='{Binding IsActive, Mode=TwoWay}'
+TextAlignment='Center'>
+                            <telerik:GridViewCheckBoxColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked='{Binding IsActive}' />
+                                </DataTemplate>
+                            </telerik:GridViewCheckBoxColumn.CellTemplate>
+                            <telerik:GridViewCheckBoxColumn.CellEditTemplate>
+                                <DataTemplate>
+                                    <CheckBox  Margin='5, 0, 0, 0'
+VerticalAlignment='Center'
+IsChecked='{Binding IsActive, Mode=TwoWay}' />
+                                </DataTemplate>
+                            </telerik:GridViewCheckBoxColumn.CellEditTemplate>
+                        </telerik:GridViewCheckBoxColumn>
+                        <telerik:GridViewCheckBoxColumn Header='تعداد'
+  IsVisible='{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Tedad}'
+ IsReadOnly='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Tedad}'
+  DataMemberBinding='{Binding Tedad, Mode=TwoWay}'
+TextAlignment='Center'>
+                            <telerik:GridViewCheckBoxColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked='{Binding Tedad}' />
+                                </DataTemplate>
+                            </telerik:GridViewCheckBoxColumn.CellTemplate>
+                            <telerik:GridViewCheckBoxColumn.CellEditTemplate>
+                                <DataTemplate>
+                                    <CheckBox  Margin='5, 0, 0, 0'
+VerticalAlignment='Center'
+IsChecked='{Binding Tedad, Mode=TwoWay}' />
+                                </DataTemplate>
+                            </telerik:GridViewCheckBoxColumn.CellEditTemplate>
+                        </telerik:GridViewCheckBoxColumn>
+                        <telerik:GridViewCheckBoxColumn Header='پروژه'
+  IsVisible='{Binding  Converter={StaticResource SecurityConverter},ConverterParameter=BooleanVisibility_Projeh}'
+ IsReadOnly='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Projeh}'
+  DataMemberBinding='{Binding Projeh, Mode=TwoWay}'
+TextAlignment='Center'>
+                            <telerik:GridViewCheckBoxColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked='{Binding Projeh}' />
+                                </DataTemplate>
+                            </telerik:GridViewCheckBoxColumn.CellTemplate>
+                            <telerik:GridViewCheckBoxColumn.CellEditTemplate>
+                                <DataTemplate>
+                                    <CheckBox  Margin='5, 0, 0, 0'
+VerticalAlignment='Center'
+IsChecked='{Binding Projeh, Mode=TwoWay}' />
+                                </DataTemplate>
+                            </telerik:GridViewCheckBoxColumn.CellEditTemplate>
+                        </telerik:GridViewCheckBoxColumn>
+                    </telerik:RadGridView.Columns>
+                    
+                </telerik:RadGridView>
+                <Button Content="رکورد جدید" Height="23" HorizontalAlignment="Left" Margin="294,36,0,0" Name="NewRecordButton" VerticalAlignment="Top" Width="75" Click="NewRecordButton_Click" />
+                <Button  Name="ViewTafzilyButton" VerticalAlignment="Top" Click="ViewTafzilyButton_Click"   Content="نمایش تفصیلی" Height="23" Width="100" HorizontalAlignment="Left" Margin="16,35,0,0" FontFamily="Tahoma"/>
+<Button Content="ذخیره رکوردها" Height="23" HorizontalAlignment="Left" Margin="122,35,0,0" Name="GridSaveButton" VerticalAlignment="Top" Width="85" FontFamily="Tahoma" Click="Acct_Ac_tblHesabMoeenRadGridSubmitButton_Click" />
+                <Button Content="حذف رکوردها" Height="23" HorizontalAlignment="Left" Margin="213,36,0,0" Name="GridDeletButton" VerticalAlignment="Top" Width="75" FontFamily="Tahoma" Click="Acct_Ac_tblHesabMoeenRadGridDeleteButton_Click" />
+                <TextBlock Height="23" Margin="122,1,0,0" Name="HesabKoltextBlock"  VerticalAlignment="Top" Text="{Binding DisplayName}" Foreground="White" HorizontalAlignment="Left" Width="118" />
+                <Button Content="کنسل" Height="23" HorizontalAlignment="Left" Margin="375,35,0,0" Name="Cancelbutton" VerticalAlignment="Top" Width="75" Click="Acct_Ac_tblHesabMoeenRadGridCancelButton_Click" />
+            </Grid>
+        </Border>
+        <Border Grid.Column='1' Margin="0,1,0,0" >
+            <Grid>
+                <Grid>
+                    <Grid.Resources>
+                        <DataTemplate x:Key='Acct_Ac_tblHesabMoeenRadDataFormTemplate'>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+
+                                </Grid.RowDefinitions>
+                                <TextBlock Margin='10,5,5,5' Text='کد معین'  Grid.Row='0' Grid.Column='0'  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_CodeMoeen}' 
+ />
+                                <TextBox Margin='10,5,5,5' Text='{Binding CodeMoeen , Mode=TwoWay}' Grid.Row='0' Grid.Column='1'  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_CodeMoeen}' 
+ IsReadOnly='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_CodeMoeen}'
+ />
+                                <TextBlock Margin='10,5,5,5' Text='شرح  کد معین'  Grid.Row="1" Grid.Column="0"  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_NameMoeen}' 
+ />
+                                <TextBox Margin='10,5,5,5' Text='{Binding NameMoeen , Mode=TwoWay}' Grid.Row="1" Grid.Column="1"  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_NameMoeen}' 
+ IsReadOnly='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_NameMoeen}'
+ />
+                                <TextBlock Margin='10,5,5,5' Text='نوع'  Grid.Row="2" Grid.Column="0"  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Noe}' 
+ />
+                                <telerik:DataFormComboBoxField  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Noe}' 
+ Margin='10,5,5,5' SelectedValuePath='ItemKey' 
+								   DisplayMemberPath='ItemValue'
+								   Grid.Row="2" Grid.Column="1"
+								   DataMemberBinding='{Binding Noe, Mode=TwoWay}'
+ 								   ItemsSource='{Binding DataView, ElementName=GetAD_GeneralItemsQueryDataSource}' />
+                                <TextBlock Margin='10,5,5,5' Text='فعال'  Grid.Row="3" Grid.Column='0'  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsActive}' 
+ />
+                                <CheckBox Margin='10,5,5,5' IsChecked='{Binding IsActive,Mode=TwoWay}' Grid.Row="3" Grid.Column='1'  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_IsActive}' 
+ IsEnabled='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_IsActive}'
+ />
+                                <TextBlock Margin='10,5,5,5' Text='تعداد'  Grid.Row="4" Grid.Column="0"  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Tedad}' 
+ />
+                                <CheckBox Margin='10,5,5,5' IsChecked='{Binding Tedad,Mode=TwoWay}' Grid.Row="4" Grid.Column="1"  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Tedad}' 
+ IsEnabled='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Tedad}'
+ />
+                                <TextBlock Margin='10,5,5,5' Text='پروژه'  Grid.Row="5" Grid.Column="0"  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Projeh}' 
+ />
+                                <CheckBox Margin='10,5,5,5' IsChecked='{Binding Projeh,Mode=TwoWay}' Grid.Row="5" Grid.Column="1"  Visibility='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=Visibility_Projeh}' 
+ IsEnabled='{Binding Converter={StaticResource SecurityConverter},ConverterParameter=IsReadOnly_Projeh}'
+ />
+                            </Grid>
+                        </DataTemplate>
+                    </Grid.Resources>
+                    <telerik:RadDataForm FlowDirection='RightToLeft' x:Name='Acct_Ac_tblHesabMoeenRadDataForm'
+AutoGenerateFields='False'
+ReadOnlyTemplate='{StaticResource Acct_Ac_tblHesabMoeenRadDataFormTemplate}'
+EditTemplate='{StaticResource Acct_Ac_tblHesabMoeenRadDataFormTemplate}'
+NewItemTemplate='{StaticResource Acct_Ac_tblHesabMoeenRadDataFormTemplate}'
+ItemsSource='{Binding DataView, ElementName=GetAcct_Ac_tblHesabMoeenByAcct_Ac_tblHesabKolQueryDataSource}'
+                                         Margin="6,68,9,0" FontFamily="Tahoma" Height="274" VerticalAlignment="Top" Opacity="0.9"
+                                         >
+                    </telerik:RadDataForm>
+                    
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</navigation:Page>
